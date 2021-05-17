@@ -10,7 +10,7 @@ module public_gateway {
   name           = "${var.name}-pub-gw"
   zone           = data.ibm_is_zones.mzr.zones[0]
   vpc            = module.vpc.id
-  resource_group = data.ibm_resource_group.rg.id 
+  resource_group = data.ibm_resource_group.rg.id
   tags           = concat(var.tags, ["vpc:${var.name}-vpc", "zone:${data.ibm_is_zones.mzr.zones[0]}"])
 }
 
@@ -25,14 +25,14 @@ module subnet {
 }
 
 module "vpc-bastion" {
-  source  = "we-work-in-the-cloud/vpc-bastion/ibm"
-  version = "0.0.7"
-  name = "${var.name}-bastion"
+  source            = "we-work-in-the-cloud/vpc-bastion/ibm"
+  version           = "0.0.7"
+  name              = "${var.name}-bastion"
   resource_group_id = data.ibm_resource_group.rg.id
-  vpc_id = module.vpc.id 
-  subnet_id = module.subnet.id
-  ssh_key_ids = [data.ibm_is_ssh_key.regional_ssh_key.id]
-  allow_ssh_from = var.local_ip
-  create_public_ip = true 
-  init_script = file("${path.module}/install.yml")
+  vpc_id            = module.vpc.id
+  subnet_id         = module.subnet.id
+  ssh_key_ids       = [data.ibm_is_ssh_key.regional_ssh_key.id]
+  allow_ssh_from    = var.local_ip
+  create_public_ip  = true
+  init_script       = file("${path.module}/install.yml")
 }

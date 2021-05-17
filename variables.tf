@@ -17,13 +17,25 @@ variable "resource_group" {
 }
 
 variable "name" {
-  type = string
+  type        = string
   description = "Name for the VPC. This will be prepended to any associated resource names."
-  default = ""
+  default     = ""
 }
 
 variable "local_ip" {
-  type = string
+  type        = string
   description = "Bastion host will allow SSH from this IP address."
-  default = ""
+  default     = ""
+}
+
+variable "os_image" {
+  type        = string
+  description = "OS Image to use for VPC instances. Default is currently Ubuntu 18."
+  default     = "ibm-ubuntu-18-04-1-minimal-amd64-2"
+}
+
+variable "tags" {
+  type        = string
+  description = "Tags that will be added to the deployed resources."
+  default     = ["owner:ryantiffany"]
 }
