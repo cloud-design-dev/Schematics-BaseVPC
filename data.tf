@@ -8,7 +8,8 @@ data "ibm_is_zones" "mzr" {
 }
 
 data "ibm_is_ssh_key" "regional_ssh_key" {
-  name = var.ssh_key
+  count = var.ssh_key != "" ? 1 : 0
+  name  = var.ssh_key
 }
 
 data "ibm_is_image" "default" {
