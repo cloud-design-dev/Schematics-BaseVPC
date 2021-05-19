@@ -35,6 +35,7 @@ variable "os_image" {
 }
 
 variable "tags" {
+  type        = map(string)
   description = "Tags that will be added to the deployed resources."
   default     = ["owner:ryantiffany"]
 }
