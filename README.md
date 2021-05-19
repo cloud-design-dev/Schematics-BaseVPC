@@ -1,12 +1,11 @@
 # Schematics Base VPC
 
-A Schematics template for a simple VPC environment. The VPC will deploy:
+An IBM Cloud [Schematics](https://cloud.ibm.com/docs/schematics?topic=schematics-about-schematics) template for a simple VPC environment. The VPC will deploy:
  - An IBM Cloud [VPC](https://cloud.ibm.com/docs/vpc?topic=vpc-about-vpc) in one of the available [multizone regions](https://cloud.ibm.com/docs/overview?topic=overview-locations#mzr-table).
  - A [public gateway](https://cloud.ibm.com/docs/vpc?topic=vpc-about-networking-for-vpc#public-gateway-for-external-connectivity) in each of the regions 3 zones. 
  - A [subnet](https://cloud.ibm.com/docs/vpc?topic=vpc-vpc-addressing-plan-design) in each of the regions 3 zones attached to that zones Public Gateway. 
  - A [bastion](https://github.com/we-work-in-the-cloud/terraform-ibm-vpc-bastion) server in the first zone in the region that only allows SSH access from specific IPs/subnets.
  - An ansible inventory file to interact with the deployed resources [not-complete](#)
-
 
 ## Deploy all resources via Terraform
 1. Clone repository:
