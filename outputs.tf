@@ -12,5 +12,5 @@ output "public_gateways" {
 }
 
 output "subnet_cidrs" {
-  value = modile.subnet[*].ipv4_cidr_block
+  value = module.subnet[*].ipv4_cidr_block
 }
