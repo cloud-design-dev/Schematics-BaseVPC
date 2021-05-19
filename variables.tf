@@ -2,7 +2,7 @@
 #  type        = string
 #  description = "IBM Cloud API key to create resources"
 #  default     = ""
-}
+#}
 
 variable "region" {
   type        = string
