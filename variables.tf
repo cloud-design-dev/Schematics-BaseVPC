@@ -7,7 +7,7 @@ variable "ibmcloud_api_key" {
 variable "region" {
   type        = string
   description = "The region where the VPC resources will be deployed."
-  default     = "us-east"
+  default     = ""
 }
 
 variable "ssh_key" {
@@ -19,19 +19,19 @@ variable "ssh_key" {
 variable "resource_group" {
   type        = string
   description = "Resource group where resources will be deployed."
-  default     = "CDE"
+  default     = ""
 }
 
 variable "name" {
   type        = string
   description = "Name for the VPC. This will be prepended to any associated resource names."
-  default     = "ghaction"
+  default     = ""
 }
 
 variable "allow_ssh_from" {
   type        = string
   description = "An IP address, CIDR block, or a single security group identifier to allow incoming SSH connection to the bastion."
-  default     = "98.40.239.8"
+  default     = ""
 }
 
 variable "os_image" {
@@ -41,11 +41,13 @@ variable "os_image" {
 }
 
 variable "create_public_ip" {
+  type = bool 
+  desciption = "Whether to allocate a public IP address for the bastion instance."
  default = true
 }
 
 variable "tags" {
   type        = list(string)
   description = "Tags that will be added to the deployed resources."
-  default     = ["owner:ryantiffany"]
+  default     = []
 }
