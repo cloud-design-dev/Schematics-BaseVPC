@@ -1,7 +1,7 @@
 variable "ibmcloud_api_key" {
- type        = string
- description = "IBM Cloud API key to create resources"
- default     = ""
+  type        = string
+  description = "IBM Cloud API key to create resources"
+  default     = ""
 }
 
 variable "region" {
@@ -11,9 +11,9 @@ variable "region" {
 }
 
 variable "ssh_key" {
- type        = string
- description = "The SSH Key that will be added to the compute instances in the region."
- default     = ""
+  type        = string
+  description = "The SSH Key that will be added to the compute instances in the region."
+  default     = ""
 }
 
 variable "resource_group" {
@@ -41,9 +41,9 @@ variable "os_image" {
 }
 
 variable "create_public_ip" {
-  type = bool 
+  type       = bool
   desciption = "Whether to allocate a public IP address for the bastion instance."
- default = true
+  default    = true
 }
 
 variable "tags" {
