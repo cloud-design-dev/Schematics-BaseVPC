@@ -1,3 +1,5 @@
+[![ci](https://github.com/cloud-design-dev/Schematics-BaseVPC/actions/workflows/main.yml/badge.svg)](https://github.com/cloud-design-dev/Schematics-BaseVPC/actions/workflows/main.yml)
+
 # Schematics Base VPC
 
 An IBM Cloud [Schematics](https://cloud.ibm.com/docs/schematics?topic=schematics-about-schematics) template for a simple VPC environment. The VPC will deploy:
