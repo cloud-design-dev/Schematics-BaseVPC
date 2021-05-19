@@ -42,7 +42,7 @@ variable "os_image" {
 
 variable "create_public_ip" {
   type       = bool
-  desciption = "Whether to allocate a public IP address for the bastion instance."
+  description = "Whether to allocate a public IP address for the bastion instance."
   default    = true
 }
 
