@@ -1,4 +1,4 @@
-[![ci](https://github.com/cloud-design-dev/Schematics-BaseVPC/actions/workflows/main.yml/badge.svg)](https://github.com/cloud-design-dev/Schematics-BaseVPC/actions/workflows/main.yml)
+[![terraform validation](https://github.com/cloud-design-dev/Schematics-BaseVPC/actions/workflows/main.yml/badge.svg)](https://github.com/cloud-design-dev/Schematics-BaseVPC/actions/workflows/main.yml)
 
 # Schematics Base VPC
 
