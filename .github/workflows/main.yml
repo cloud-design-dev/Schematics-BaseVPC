@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-    - validate
+    - main
 jobs:
   terraform_validate:
     runs-on: ubuntu-latest
