@@ -10,11 +10,11 @@ variable "region" {
   default     = "us-east"
 }
 
-#variable "ssh_key" {
-#  type        = string
-#  description = "The SSH Key that will be added to the compute instances in the region."
-#  default     = "hyperion"
-#}
+variable "ssh_key" {
+ type        = string
+ description = "The SSH Key that will be added to the compute instances in the region."
+ default     = ""
+}
 
 variable "resource_group" {
   type        = string
