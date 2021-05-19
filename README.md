@@ -5,20 +5,42 @@ A Schematics template for a simple VPC environment. The VPC will deploy:
  - A [public gateway](https://cloud.ibm.com/docs/vpc?topic=vpc-about-networking-for-vpc#public-gateway-for-external-connectivity) in each of the regions 3 zones. 
  - A [subnet](https://cloud.ibm.com/docs/vpc?topic=vpc-vpc-addressing-plan-design) in each of the regions 3 zones attached to that zones Public Gateway. 
  - A [bastion](https://github.com/we-work-in-the-cloud/terraform-ibm-vpc-bastion) server in the first zone in the region that only allows SSH access from specific IPs/subnets.
- - An ansible inventory file to interact with the deployed resources [not-complete]()
+ - An ansible inventory file to interact with the deployed resources [not-complete](#)
 
 
-
-
+## Deploy all resources via Terraform
+1. Clone repository:
+    ```sh
+    git clone https://github.com/cloud-design-dev/Schematics-BaseVPC.git
+    cd Schematics-BaseVPC
+    ```
+1. Copy `terraform.tfvars.template` to `terraform.tfvars`:
+   ```sh
+   cp terraform.tfvars.template terraform.tfvars
+   ```
+1. Edit `terraform.tfvars` to match your environment.
+1. Run `tfswitch` to point to the right Terraform version for this solution:
+   ```
+   tfswitch
+   ```
+1. Deploy all resources:
+   ```sh
+   terraform init
+   terraform plan -out default.tfplan 
+   terraform apply default.tfplan
+   ```
+## Deploy all resources via Schematics
+**gathering screenshots**
 ## Inputs
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| ibmcloud\_api\_key | IBM Cloud API key to create resources. | `string` | n/a | yes |
 | name | Label that will be assigned to the VPC and associated resources. | `string` | n/a | yes |
 | region | The VPC region where the resources will be provisioned | `string` | `"us-east"` | yes |
 | resource\_group | Name of the resource group to associate with the deployed resources. | `string` | n/a | yes |
 | allow\_ssh\_from | An IP address, CIDR block, or a single security group identifier to allow incoming SSH connection to the bastion. | `string` | `"0.0.0.0/0"`| no |
 | image\_name | Name of the image to use for the virtual server instance | `string` | `"ibm-ubuntu-20-04-minimal-amd64-2"` | no |
-| user\_data\_script | Script to run during the virtual server instance initialization. Defaults to an [Ubuntu specific script](https://github.com/cloud-design-dev/IBM-Cloud-VPC-Instance-Module/blob/main/init.yml) when set to empty | `string` | `""` | no |
+| user\_data\_script | Script to run during the instance initialization. Defaults to an Ubuntu specific [script](https://github.com/we-work-in-the-cloud/terraform-ibm-vpc-bastion/blob/master/init-script-ubuntu.sh) when set to empty. | `string` | `""` | no |
 | profile\_name | Instance profile to use for the virtual server instance | `string` | `"cx2-2x4"` | no |
 | ssh\_key | Name of an existing IBM Cloud SSH Key in the choosen Region. | `string` | n/a | no |
 | tags | List of tags to add on all created resources | `list(string)` | `[]` | no |
@@ -27,6 +49,10 @@ A Schematics template for a simple VPC environment. The VPC will deploy:
 
 | Name | Description |
 |------|-------------|
-| id | ID of the virtual server instance |
-| primary_network_interface_id | ID of the virtual server instances primary network interface  | 
-| primary_ip4_address | Primary private IP address of the virtual server instance |
+| vpc_id | ID of the created VPC |
+
+
+## Diagram
+![Diagram of deployment](vpc-diagram.png)
+
+Diagram generated using [vpc-diagram-exporter](https://github.com/l2fprod/vpc-diagram-exporter).

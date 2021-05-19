@@ -1,0 +1,5 @@
+ibmcloud_api_key = ""
+region           = ""
+ssh_key          = ""
+name             = ""
+allow_ssh_from   = ""

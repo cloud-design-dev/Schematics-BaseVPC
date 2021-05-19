@@ -1,3 +1,20 @@
+resource tls_private_key ssh {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "ibm_is_ssh_key" "generated_key" {
+  name           = "${var.name}-${var.region}-key"
+  public_key     = tls_private_key.ssh.public_key_openssh
+  resource_group = data.ibm_resource_group.rg.id
+  tags           = concat(var.tags, ["region:${var.region}"])
+}
+
+locals {
+  ssh_key_ids = var.ssh_key != "" ? [data.ibm_is_ssh_key.regional_ssh_key[0].id, ibm_is_ssh_key.generated_key.id] : [ibm_is_ssh_key.generated_key.id]
+}
+
+
 module vpc {
   source         = "git::https://github.com/cloud-design-dev/IBM-Cloud-VPC-Module.git"
   name           = "${var.name}-vpc"
@@ -33,8 +50,8 @@ module "vpc-bastion" {
   resource_group_id = data.ibm_resource_group.rg.id
   vpc_id            = module.vpc.id
   subnet_id         = module.subnet[0].id
-  ssh_key_ids       = [data.ibm_is_ssh_key.regional_ssh_key.id]
-  allow_ssh_from    = var.local_ip
-  create_public_ip  = true
+  ssh_key_ids       = local.ssh_key_ids
+  allow_ssh_from    = var.allow_ssh_from
+  create_public_ip  = var.create_public_ip
   init_script       = file("${path.module}/install.yml")
 }
