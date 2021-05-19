@@ -1,4 +1,4 @@
-name: ci
+name: tf-validate
 
 on:
   push:
