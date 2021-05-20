@@ -52,8 +52,12 @@ An IBM Cloud [Schematics](https://cloud.ibm.com/docs/schematics?topic=schematics
 
 | Name | Description |
 |------|-------------|
-| vpc_id | ID of the created VPC |
-
+| vpc\_id | ID of the created VPC |
+| ssh\_command | SSH command to run against any instances deployed behind the bastion |
+| public\_gateway\_ids | Public Gateway IDs |
+| subnet\_ids | Subnet IDs |
+| subnet\_cidrs | CIDR block of created subnets |
+| bastion\_address | Public IP of the bastion instance |
 
 ## Diagram
 ![Diagram of deployment](vpc-diagram.png)
