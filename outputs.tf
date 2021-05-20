@@ -7,10 +7,18 @@ output "vpc_id" {
   value = module.vpc.id
 }
 
-output "public_gateways" {
-  value = module.public_gateway[*].gateway
+output "public_gateway_ids" {
+  value = module.public_gateway[*].id
 }
 
+output "subnet_ids" {
+  value = module.subnet[*].id
+}
+  
 output "subnet_cidrs" {
   value = module.subnet[*].ipv4_cidr_block
+}
+  
+output "bastion_address" {
+  value = module.vpc-bastion.bastion_public_ip
 }
