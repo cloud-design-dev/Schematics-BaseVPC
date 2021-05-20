@@ -1,16 +1,19 @@
 variable "ibmcloud_api_key" {
   type        = string
   description = "IBM Cloud API key to create resources"
+  default = ""
 }
 
 variable "region" {
   type        = string
   description = "The region where the VPC resources will be deployed."
+  default = "us-east"
 }
 
 variable "ssh_key" {
   type        = string
   description = "The SSH Key that will be added to the compute instances in the region."
+  default = ""
 }
 
 variable "resource_group" {
@@ -27,6 +30,7 @@ variable "name" {
 variable "allow_ssh_from" {
   type        = string
   description = "An IP address, CIDR block, or a single security group identifier to allow incoming SSH connection to the bastion."
+  default = "0.0.0.0/0"
 }
 
 variable "os_image" {
