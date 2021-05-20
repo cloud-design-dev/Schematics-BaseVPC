@@ -27,6 +27,6 @@ jobs:
         name: terraform validate
         run: find . -name ".terraform" -prune -o -type f -name "*.tf" -exec dirname {} \;|sort -u | while read m; do (cd "$m" && echo "$m - validate" && terraform validate && echo "√ $m") || exit 1 ; done
       -
-        name: terraform fmt check
-        run: terraform fmt -write=false -recursive
+        name: terraform ibm check 
+        run: terraform plan -var="IBMCLOUD_API_KEY=$IBMCLOUD_API_KEY" -out default.tfplan
 
