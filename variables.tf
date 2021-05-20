@@ -21,6 +21,7 @@ variable "resource_group" {
 variable "name" {
   type        = string
   description = "Name for the VPC. This will be prepended to any associated resource names."
+  default     = "gh-action"
 }
 
 variable "allow_ssh_from" {
