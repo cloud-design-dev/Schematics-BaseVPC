@@ -55,3 +55,5 @@ module "vpc-bastion" {
   create_public_ip  = var.create_public_ip
   init_script       = file("${path.module}/install.yml")
 }
+
+resource "null_resource" "example" {}
